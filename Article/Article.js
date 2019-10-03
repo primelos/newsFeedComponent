@@ -88,6 +88,77 @@ const data = [
   }
 ];
 
+let newArray =[{
+   title: `Developer`,
+   date: 'Aug 9th, 2019',
+   firstParagraph: ` Lambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda `,
+
+    secondParagraph: ` Lambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda` ,
+
+    thirdParagraph: `Lambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda`
+}]
+
+let mergeArray = [...data, ...newArray]
+
+
+let divArt = document.querySelector('.articles')
+
+function newArticle (title, date, firstParagraph, secondParagraph, thirdParagraph){
+  let div1 = document.createElement('div')
+  let tagH2 = document.createElement('h2')
+  let pDate = document.createElement('p')
+  let tagP1 = document.createElement('p')
+  let tagP2 = document.createElement('p')
+  let tagP3 = document.createElement('p')
+  let expandOpen = document.createElement('span')
+  let expandClose = document.createElement('span')
+
+  
+  div1.appendChild(tagH2)
+  div1.appendChild(pDate)
+  div1.appendChild(tagP1)
+  div1.appendChild(tagP2)
+  div1.appendChild(tagP3)
+  div1.appendChild(expandOpen)
+  div1.appendChild(expandClose)
+
+  div1.classList.add('article');
+  pDate.classList.add('date')
+  expandOpen.classList.add('expandButton')
+  expandClose.classList.add('closeButton')
+
+  let open = '\u2196'
+  let close =  '\u2198'
+
+  tagH2.textContent = title;
+  pDate.textContent = date;
+  tagP1.textContent = firstParagraph;
+  tagP2.textContent = secondParagraph;
+  tagP3.textContent = thirdParagraph;
+  expandOpen.textContent = open
+  expandClose.textContent = close
+
+
+
+  expandOpen.addEventListener('click', (e) => {
+    div1.classList.toggle('article-open')
+    div1.classList.toggle('close')
+    expandOpen.classList.toggle("hide")
+    
+  })
+  expandClose.addEventListener('click', (e) => {
+    div1.classList.toggle('article-open')
+    div1.classList.toggle('close')
+    expandClose.classList.toggle("hide")
+    expandOpen.classList.toggle("expandButton")
+    // expandOpen.classList.toggle("hide")
+  })
+return div1
+}
+let newData = mergeArray.map((item) => {
+  divArt.appendChild(newArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph))
+  
+})
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
