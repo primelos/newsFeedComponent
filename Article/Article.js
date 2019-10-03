@@ -88,7 +88,7 @@ const data = [
   }
 ];
 
-let newObj =[{
+let newArray =[{
    title: `Developer`,
    date: 'Aug 9th, 2019',
    firstParagraph: ` Lambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda `,
@@ -98,7 +98,7 @@ let newObj =[{
     thirdParagraph: `Lambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda LambdaLambda`
 }]
 
-mergeObj = [...newObj, ...data]
+let mergeArray = [...data, ...newArray]
 
 
 let divArt = document.querySelector('.articles')
@@ -155,7 +155,7 @@ function newArticle (title, date, firstParagraph, secondParagraph, thirdParagrap
   })
 return div1
 }
-let newData = mergeObj.map((item) => {
+let newData = mergeArray.map((item) => {
   divArt.appendChild(newArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph))
   
 })
